@@ -1,5 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Rubik:wght@300;400;500;600;700&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Rubik:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Roboto&family=Rubik:wght@300;400;500;600;700&display=swap');
 @import './reset.scss';
+@import './mixins.scss';
 
 
 .section{
@@ -155,5 +157,136 @@
     }
     &-timer{
         margin-left: auto;
+        column-gap: 19px;
+        font-size: 16px;
+        font-weight: 400;
+        span{
+            font-weight: 400;
+            line-height: 19px;
+            color: $grey;
+
+        }
+        &__values{
+            column-gap: 10px;
+
+        }
+        &__item{
+            color: $sea;
+            &-value{
+                font-weight: 700;
+                font-size: 40px;
+                line-height: 47px;
+                min-width: 55px;
+                text-align: center;
+            }
+            &-info{
+                text-align: center;
+            }
+        }
     }
 }
+
+.description{
+    margin-top: 7%;
+    max-width: 540px;
+    animation: move 1s ease-in-out;
+
+    &-title{
+        h1{
+            font-weight: 600;
+            font-size: 100px;
+            line-height: 100px;
+            color: $white;
+        }
+    }
+    &-subtitle{
+        font-family: 'Inter';
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 27px;
+        margin-top: 26px;
+        color: $sea;
+    }
+    &-button{
+        @include button;
+        @include hoverViolet;
+        margin-top: 35px;
+    }
+}
+
+.editions{
+    &-list{
+        margin-top: 32px;
+        display: grid;
+        grid-template-columns: repeat(3, 350px);
+        column-gap: 16px;
+        justify-content: center;
+    }
+
+    &-item{
+        min-height: 459px;
+        background: linear-gradient(180deg, #141615 0%, #1C2023 100%);
+        padding: 17px;
+        border-radius: 6px;
+        position: relative;
+        &__title, &__subtitle{
+            text-align: center;
+        }
+        &__title{
+            font-family: 'Rubik';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 19px;
+        }
+        &__subtitle{
+            text-transform: uppercase;
+            font-family: 'Rubik';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 19px;
+            color: $sea;
+            margin-top: 15px;
+            margin-bottom: 32px;
+        }
+        &__description{
+            font-family: 'Rubik';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
+            color: $sea;
+            li{
+                margin-bottom: 12px;
+            }
+        }
+        &__price{
+            font-family: 'Rubik';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 19px;
+            line-height: 23px;
+            color: $white;
+            text-align: end;
+            // position: absolute;
+            // right: 17px;
+        }
+        &__btn{
+            @include button;
+            @include hoverViolet;
+        }
+    }
+}
+
+@keyframes move {
+    0% {
+        opacity: 0;
+        transform: translateX(-400px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
