@@ -23,3 +23,19 @@
         background: #6039a0;
     }
 }
+
+@mixin hoverOrange{
+    &:hover{
+        background: #be4343;
+    }
+
+    &:active{
+        background: #ebbc3c;
+    }
+}
+
+@mixin bg{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
