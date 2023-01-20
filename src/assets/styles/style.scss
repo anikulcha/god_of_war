@@ -686,7 +686,139 @@
             }
         }
     }
+}
 
+.footer{
+    
+    padding-top: 156px;
+    position: relative;
+    padding-bottom: 20px;
+    &::before{
+        content: '';
+        display: block;
+        width: 786px;
+        height: 439px;
+        position: absolute;
+        top: 0;
+        right: 20%;
+        z-index: -1;
+        background: url('../images/footer.png') no-repeat center/cover;
+    }
+    &-top{
+        justify-content: space-between;
+        
+    }
+    &-menu{
+        column-gap: 22px;
+        font-weight: 400;
+        line-height: 27px;
+        text-transform: uppercase;
+        transition: color .2s ease;
+        
+        a{
+            color: rgba(255, 255, 255, .5);
+            &:hover{
+                color: $violet;
+            }
+        }
+    }
+    &-lang{
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 27px;
+        cursor: pointer;
+        
+        span{
+            text-transform: uppercase;
+            color: $grey;
+            margin-right: 5px;
+        } 
+        &__current{
+            color: $white;
+        }
+        &__list{
+            position: relative;
+            &:hover{
+                color: $orange;
+                .footer-lang__content{
+                    visibility: visible;
+                }
+            }
+        }
+        &__content{
+            background: $dark;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            visibility: hidden;
+            &-item{
+                cursor: pointer;
+                text-transform: uppercase;
+                font-weight: 500;
+                transition: color .25s ease;
+                &:hover{
+                    color: $violet;
+                }
+            }
+        }
+    }
+    &-info{
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+        text-align: center;
+        color: $grey;
+        margin: 50px auto 38px auto;
+    }
+    &-icon{
+        text-align: center;
+    }
+    &-year{
+        text-align: center;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        color: $grey;
+        margin: 20px auto 13px auto;
+    }
+    &-rights{
+        text-align: center;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        color: $grey;
+        a{
+            text-decoration: underline;
+        }
+    }
+}
+
+.swiper{
+    &-button{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 32px;
+        height: 32px;
+        background: #8c96a0;
+        border-radius: 6px;
+        z-index: 9;
+        cursor: pointer;
+        transition: background .25s;
+        &:hover{
+            background: $violet;
+        }
+    }
+    &-item{
+        &__prev{
+            left: 10%;
+        }
+        &__next{
+            right: 10%;
+            // transform: scale(-1, 1);
+        }
+
+    }
 }
 
 @keyframes move {
