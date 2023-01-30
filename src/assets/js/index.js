@@ -3,14 +3,18 @@ import '../styles/mixins.scss'
 import '../styles/style.scss';
 
 
-
+const checkboxes = {
+    requirements: ["minimum", "recomended"],
+    versions: ["standart", "limited"]
+}
 let isPlay = false;
 const classes = {
     opened: 'opened',
-    hidden: 'hidden'
+    hidden: 'hidden',
+    active: 'active'
 }
 
-
+const checkbox = document.querySelectorAll('.checkbox');
 const header = document.querySelector('.header');
 const menuLink = document.querySelectorAll('.menu-link');
 const menuButton = document.querySelector('.header-menu__button');
@@ -71,8 +75,25 @@ const handleVideo = ({target}) => {
     isPlay ? video.play() : video.pause()
 }
 
-startTimer("January 30, 2023 00:00:00")
+const handleChackbox = ({currentTarget: {checked, name}}) => {
+    const {active} = classes;
+
+    const value = checkboxes[name][Number(checked)];
+    const list = document.getElementById(value);
+    const tabs = document.querySelectorAll(`[data-${name}]`);
+    const siblings = list.parentElement.children;
+    console.log(siblings)
+    for(const item of siblings) item.classList.remove(active);
+    for(const tab of tabs){
+        tab.classList.remove(active);
+        tab.dataset[name] === value && tab.classList.add(active)
+    }
+    list.classList.add(active);
+    console.log(value)
+}
+
+startTimer("January 30, 2023 23:59:59")
 menuButton.addEventListener('click', toggleMenu);
 videoButton.addEventListener('click', handleVideo)
 menuLink.forEach((link) => link.addEventListener('click', scrollToSection))
-
+checkbox.forEach((box) => box.addEventListener('click', handleChackbox))
