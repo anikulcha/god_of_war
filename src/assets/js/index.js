@@ -1,7 +1,9 @@
 import '../styles/reset.scss';
 import '../styles/mixins.scss'
 import '../styles/style.scss';
-
+import 'swiper/swiper.min.css';
+import Swiper, { Navigation } from 'swiper';
+Swiper.use(Navigation)
 
 const checkboxes = {
     requirements: ["minimum", "recomended"],
@@ -19,7 +21,8 @@ const header = document.querySelector('.header');
 const menuLink = document.querySelectorAll('.menu-link');
 const menuButton = document.querySelector('.header-menu__button');
 const video = document.getElementById('video');
-const videoButton = document.querySelector('.video-btn')
+const videoButton = document.querySelector('.video-btn');
+const faqItem = document.querySelectorAll('.faq-item')
 
 const toggleMenu = () =>
 {
@@ -91,6 +94,21 @@ const handleChackbox = ({currentTarget: {checked, name}}) => {
     list.classList.add(active);
     console.log(value)
 }
+
+const initSwiper = () => {
+    new Swiper(".swiper", {
+        loop: true,
+        slidesPerView: 3,
+        spaceBetween: 30,
+        initialSlide: 2,
+        navigation:{
+            nextEl: '.swiper-item__next',
+            prevEl: '.swiper-item__prev'
+        }
+    })
+}
+
+initSwiper()
 
 startTimer("January 30, 2023 23:59:59")
 menuButton.addEventListener('click', toggleMenu);
