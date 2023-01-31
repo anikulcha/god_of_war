@@ -5,6 +5,35 @@
 
 
 .section{
+    &.hidden{
+        .editions{
+            &-item{
+                transition: transform 0s;
+                transform: translateX(-2000px);
+            }
+        }
+        h2{
+            transition: opacity 0;
+            opacity: 0;
+        }
+        .dual, 
+        .explore-info{
+            transition: column-gap 0s;
+            column-gap: 250%;
+        }
+        .video{
+            transition: transform 0s;
+            transform: scale(0);
+        }
+        .news{
+            transition: transform 0s;
+            transform: translateX(-200%);
+        }
+        .faq-item{
+            transition: transform 0s;
+            transform: translateX(200%);
+        }
+    }
     &-main{
         padding-top: 40px;
         position: relative;
@@ -240,7 +269,16 @@
         background: linear-gradient(180deg, #141615 0%, #1C2023 100%);
         padding: 17px;
         border-radius: 6px;
-        // position: relative;
+        transition: transform 0.25s ease-in-out;
+        transform: translateX(0);
+
+        &:nth-child(2){
+            transition-delay: .25s;
+        }
+        &:last-child{
+            transition-delay: .5s;
+        }
+
         &__title, &__subtitle{
             text-align: center;
         }

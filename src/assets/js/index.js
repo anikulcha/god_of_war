@@ -22,7 +22,9 @@ const menuLink = document.querySelectorAll('.menu-link');
 const menuButton = document.querySelector('.header-menu__button');
 const video = document.getElementById('video');
 const videoButton = document.querySelector('.video-btn');
-const faqItem = document.querySelectorAll('.faq-item')
+const faqItem = document.querySelectorAll('.faq-item');
+const section = document.querySelectorAll('.section');
+
 
 const toggleMenu = () =>
 {
@@ -108,10 +110,28 @@ const initSwiper = () => {
     })
 }
 
+const handleFaqItem = ({currentTarget: target}) => {
+    target.classList.toggle(classes.opened)
+    const isOpened = target.classList.contains(classes.opened);
+    const height = target.querySelector('p').clientHeight;
+    const contant = target.querySelector('.faq-item__content');
+    contant.style.height = `${isOpened ? height : 0}px`
+}
+
 initSwiper()
 
-startTimer("January 30, 2023 23:59:59")
+const handleScroll = () => {
+    const {scrollY: y, innerHeight: h} = window;
+    section.forEach((section) => {
+        if(y > section.offsetTop - h / 1.5) section.classList.remove(classes.hidden)
+    })
+}
+
+window.addEventListener('scroll', handleScroll)
+
+startTimer("February 28, 2023 23:59:59")
 menuButton.addEventListener('click', toggleMenu);
 videoButton.addEventListener('click', handleVideo)
 menuLink.forEach((link) => link.addEventListener('click', scrollToSection))
 checkbox.forEach((box) => box.addEventListener('click', handleChackbox))
+faqItem.forEach((item) => item.addEventListener('click', handleFaqItem));
