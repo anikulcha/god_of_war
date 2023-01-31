@@ -16,14 +16,34 @@ const classes = {
     active: 'active'
 }
 
-const checkbox = document.querySelectorAll('.checkbox');
-const header = document.querySelector('.header');
-const menuLink = document.querySelectorAll('.menu-link');
-const menuButton = document.querySelector('.header-menu__button');
-const video = document.getElementById('video');
-const videoButton = document.querySelector('.video-btn');
-const faqItem = document.querySelectorAll('.faq-item');
-const section = document.querySelectorAll('.section');
+const values = [    
+    {
+        price: 19.99,
+        title: 'Standart Edition'
+    },
+    {
+        price: 18.99,
+        title: 'Standart Edition'
+    },
+    {
+        price: 29.99,
+        title: 'Deluxe Edition'
+    }
+]
+
+const checkbox     = document.querySelectorAll('.checkbox');
+const header       = document.querySelector('.header');
+const menuLink     = document.querySelectorAll('.menu-link');
+const menuButton   = document.querySelector('.header-menu__button');
+const video        = document.getElementById('video');
+const videoButton  = document.querySelector('.video-btn');
+const faqItem      = document.querySelectorAll('.faq-item');
+const section      = document.querySelectorAll('.section');
+const buyButton    = document.querySelectorAll('.buy-button');
+const modal        = document.querySelector('.modal');
+const modalSubTitle   = document.querySelector('.modal-subtitle');
+const modalPrice   = document.querySelector('.modal-total__price');
+const modalClose   = document.querySelector('.modal-close')
 
 
 const toggleMenu = () =>
@@ -127,11 +147,24 @@ const handleScroll = () => {
     })
 }
 
+const handleBuyButton = ({currentTarget: target}) => {
+    const { value } = target.dataset;
+    if(!value) return;
+    const {price, title} = values[value];
+    modalSubTitle.innerText = title;
+    modalPrice.innerText = `${price}`;
+    modal.classList.add(classes.opened)
+}
+
+const closeModal = () => modal.classList.remove(classes.opened)
+
 window.addEventListener('scroll', handleScroll)
 
 startTimer("February 28, 2023 23:59:59")
 menuButton.addEventListener('click', toggleMenu);
-videoButton.addEventListener('click', handleVideo)
-menuLink.forEach((link) => link.addEventListener('click', scrollToSection))
-checkbox.forEach((box) => box.addEventListener('click', handleChackbox))
+videoButton.addEventListener('click', handleVideo);
+menuLink.forEach((link) => link.addEventListener('click', scrollToSection));
+checkbox.forEach((box) => box.addEventListener('click', handleChackbox));
 faqItem.forEach((item) => item.addEventListener('click', handleFaqItem));
+buyButton.forEach((btn) => btn.addEventListener('click', handleBuyButton));
+modalClose.addEventListener('click', closeModal)
